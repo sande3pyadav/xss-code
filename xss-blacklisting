@@ -1,0 +1,29 @@
+<?php
+header ("X-XSS-Protection: 0");
+
+// Is there any input?
+if (array_key_exists("name", $_GET) && $_GET['name'] != NULL) {
+    // Feedback for end user
+    $name = $_GET['name'];
+    $tags = ['<script>', '<img>', '<body>', '<iframe>', '<svg>'];
+    
+    // Remove harmful tags from input
+    foreach ($tags as $value) {
+        $name = str_replace($value, '', $name);
+    }
+
+    // Echo sanitized name
+    echo "Hello " . $name;
+}
+?>
+
+//xss simple code 
+
+
+<?php 
+
+$name=$_GET['name'];
+echo "<h2>Welcome </h2>".$name;
+?>
+
+
